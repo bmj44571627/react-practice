@@ -8,6 +8,7 @@ function App () {
 
 const getWeatherByCurrentLocation = async(lat, lon) =>{
 
+  
   try {
     let url = 
     `https://api.openweathermap.org/data/2.5/weather?lat=57&lon=-2.15&appid=547efbb8e2e0f9fb24c4ae6ad98c03bb&units=metric`;
@@ -20,21 +21,6 @@ const getWeatherByCurrentLocation = async(lat, lon) =>{
     console.log(err.message);
   }
 };
-
-
-  const getCurrentLocation = () => {
-
-    navigator.geolocation.getCurrentPosition((position) => {
-
-      const { latitude, longitude } = position.coords;
-
-      getWeatherByCurrentLocation(latitude, longitude);
-
-      console.log('현재위치?', latitude, longitude);
-
-    });
-
-  };
     
   const getWeatherByCity = () => {
     try {
@@ -45,6 +31,7 @@ const getWeatherByCurrentLocation = async(lat, lon) =>{
     const data = await res.json();
     setWeather(data);
     setLoading(false);
+    
     
     }catch (err) {
       console.log(err);
